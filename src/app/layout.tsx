@@ -2,8 +2,8 @@ import "./styles/global.css";
 import React from "react";
 
 export const metadata = {
-  title: "Recipe Collection",
-  description: "Browse and favorite recipes",
+  title: "Culinary Collection",
+  description: "Discover and curate exceptional recipes",
 };
 
 export default function RootLayout({
@@ -14,7 +14,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <main className="max-w-4xl mx-auto p-4">{children}</main>
+        <main className="min-h-screen">
+          <div className="max-w-7xl mx-auto px-6 py-8">{children}</div>
+        </main>
       </body>
     </html>
   );
