@@ -2,6 +2,7 @@
 import { useEffect, useState, useMemo } from "react";
 import SearchBar from "../components/SearchBar";
 import RecipeCard from "../components/RecipeCard";
+import Header from "../components/Header";
 
 type Meal = any;
 
@@ -53,45 +54,47 @@ export default function HomePage() {
   }, [debouncedQ]);
 
   return (
-    <div className="space-y-8">
-      <div className="text-center space-y-4">
-        <h1 className="font-display text-5xl md:text-6xl font-bold bg-gradient-to-r from-white via-amber-100 to-amber-200 bg-clip-text text-transparent">
-          Culinary Collection
-        </h1>
-        <p className="text-xl text-slate-300 font-light max-w-2xl mx-auto">
-          Discover exceptional recipes from around the world, curated for the
-          discerning palate
-        </p>
-      </div>
+    <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+      <div className="layout-container flex h-full grow flex-col">
+        {/* Header */}
+        <Header />
 
-      <div className="max-w-4xl mx-auto">
-        <SearchBar value={q} onChange={setQ} isDebouncing={isDebouncing} />
-      </div>
-
-      {loading ? (
-        <div className="flex items-center justify-center py-12">
-          <div className="flex items-center gap-3 text-amber-400">
-            <div className="w-6 h-6 border-2 border-amber-400 border-t-transparent rounded-full animate-spin"></div>
-            <span className="font-medium">
-              Discovering exquisite recipes...
-            </span>
+        {/* Main Content */}
+        <main className="flex flex-col flex-1 px-10">
+          <div className="flex flex-col items-center justify-center py-20">
+            <div className="w-full max-w-2xl">
+              <SearchBar
+                value={q}
+                onChange={setQ}
+                isDebouncing={isDebouncing}
+              />
+            </div>
           </div>
-        </div>
-      ) : null}
 
-      {!loading && recipes.length === 0 ? (
-        <div className="text-center py-12">
-          <div className="text-slate-400 text-lg font-light">
-            No recipes found. Try searching for something else.
-          </div>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-          {recipes.map((r: any) => (
-            <RecipeCard key={r.idMeal} recipe={r} />
-          ))}
-        </div>
-      )}
+          {loading ? (
+            <div className="flex items-center justify-center py-12">
+              <div className="flex items-center gap-3 text-[var(--primary-color)]">
+                <div className="w-6 h-6 border-2 border-[var(--primary-color)] border-t-transparent rounded-full animate-spin"></div>
+                <span className="font-medium">Searching for recipes...</span>
+              </div>
+            </div>
+          ) : null}
+
+          {!loading && recipes.length === 0 ? (
+            <div className="text-center py-12">
+              <div className="text-slate-600 text-lg font-medium">
+                No recipes found. Try searching for something else.
+              </div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+              {recipes.map((r: any) => (
+                <RecipeCard key={r.idMeal} recipe={r} />
+              ))}
+            </div>
+          )}
+        </main>
+      </div>
     </div>
   );
 }

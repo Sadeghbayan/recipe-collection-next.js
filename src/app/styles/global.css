@@ -1,33 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
 @import "tailwindcss";
 
-/* Premium Luxury Design */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+:root {
+  --primary-color: #f48525;
+  --secondary-color: #fcece0;
+  --text-primary: #1c140d;
+  --text-secondary: #756a64;
+  --background-color: #fcfaf8;
+  --border-color: #f4ede7;
+}
 
 html,body {
   height: 100%;
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
-  color: #f8fafc;
+  font-family: 'Work Sans', sans-serif;
+  background: var(--background-color);
+  color: var(--text-primary);
   min-height: 100vh;
 }
 
-/* Custom scrollbar for luxury feel */
-::-webkit-scrollbar {
-  width: 8px;
+.checkbox-custom {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.375rem;
+  border-width: 2px;
+  border-color: var(--border-color);
+  background-color: transparent;
+  transition: all 0.2s;
 }
 
-::-webkit-scrollbar-track {
-  background: #1a1a2e;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #d4af37, #b8941f);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #f4d03f, #d4af37);
+.checkbox-custom:checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
 }

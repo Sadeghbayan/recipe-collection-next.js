@@ -2,8 +2,8 @@ import "./styles/global.css";
 import React from "react";
 
 export const metadata = {
-  title: "Culinary Collection",
-  description: "Discover and curate exceptional recipes",
+  title: "Tastebook",
+  description: "Discover and save your favorite recipes",
 };
 
 export default function RootLayout({

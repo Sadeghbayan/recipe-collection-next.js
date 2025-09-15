@@ -9,8 +9,12 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ["Playfair Display", "serif"],
-        sans: ["Inter", "sans-serif"],
+        sans: ["Work Sans", "sans-serif"],
+      },
+      colors: {
+        primary: {
+          DEFAULT: "#f48525",
+        },
       },
     },
   },
