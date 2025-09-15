@@ -2,7 +2,15 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function RecipeCard({ recipe }: { recipe: any }) {
+type Recipe = {
+  idMeal: string;
+  strMeal: string;
+  strMealThumb: string;
+  strCategory: string;
+  strArea: string;
+};
+
+export default function RecipeCard({ recipe }: { recipe: Recipe }) {
   return (
     <Link
       href={`/recipes/${recipe.idMeal}`}

@@ -26,8 +26,8 @@ export default async function RecipePage({ params }: Props) {
   const instructions = meal.strInstructions
     ? meal.strInstructions
         .split("\r\n")
-        .filter((step) => step.trim() !== "")
-        .map((step) => step.trim())
+        .filter((step: string) => step.trim() !== "")
+        .map((step: string) => step.trim())
     : [];
 
   return (
@@ -81,7 +81,7 @@ export default async function RecipePage({ params }: Props) {
               {/* Instructions */}
               <h2 className="text-2xl font-bold mb-6">Instructions</h2>
               <div className="prose max-w-none text-[var(--text-secondary)] space-y-4">
-                {instructions.map((step, index) => (
+                {instructions.map((step: string, index: number) => (
                   <p key={index}>
                     <strong>{index + 1}.</strong> {step}
                   </p>

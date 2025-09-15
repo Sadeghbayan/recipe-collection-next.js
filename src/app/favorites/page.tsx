@@ -3,9 +3,17 @@ import { useEffect, useState } from "react";
 import RecipeCard from "../../components/RecipeCard";
 import Header from "../../components/Header";
 
+type Recipe = {
+  idMeal: string;
+  strMeal: string;
+  strMealThumb: string;
+  strCategory: string;
+  strArea: string;
+};
+
 export default function FavoritesPage() {
   const [favorites, setFavorites] = useState<string[]>([]);
-  const [recipes, setRecipes] = useState<any[]>([]);
+  const [recipes, setRecipes] = useState<Recipe[]>([]);
 
   useEffect(() => {
     const stored = localStorage.getItem("favorites");

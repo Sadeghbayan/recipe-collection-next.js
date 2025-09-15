@@ -4,11 +4,9 @@ import React from "react";
 export default function SearchBar({
   value,
   onChange,
-  isDebouncing = false,
 }: {
   value: string;
   onChange: (v: string) => void;
-  isDebouncing?: boolean;
 }) {
   return (
     <label className="flex flex-col w-full">

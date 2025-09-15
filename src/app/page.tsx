@@ -1,17 +1,22 @@
 "use client";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import SearchBar from "../components/SearchBar";
 import RecipeCard from "../components/RecipeCard";
 import Header from "../components/Header";
 
-type Meal = any;
+type Meal = {
+  idMeal: string;
+  strMeal: string;
+  strMealThumb: string;
+  strCategory: string;
+  strArea: string;
+};
 
 export default function HomePage() {
   const [q, setQ] = useState("");
   const [debouncedQ, setDebouncedQ] = useState("");
   const [recipes, setRecipes] = useState<Meal[]>([]);
   const [loading, setLoading] = useState(false);
-  const [isDebouncing, setIsDebouncing] = useState(false);
 
   useEffect(() => {
     // initial query
@@ -21,17 +26,12 @@ export default function HomePage() {
 
   // Debounce the search query
   useEffect(() => {
-    if (q !== debouncedQ) {
-      setIsDebouncing(true);
-    }
-
     const timer = setTimeout(() => {
       setDebouncedQ(q);
-      setIsDebouncing(false);
     }, 300); // 300ms delay
 
     return () => clearTimeout(timer);
-  }, [q, debouncedQ]);
+  }, [q]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -44,7 +44,7 @@ export default function HomePage() {
         const json = await res.json();
         setRecipes(json.meals ?? []);
       } catch (err) {
-        if ((err as any).name !== "AbortError") console.error(err);
+        if ((err as Error).name !== "AbortError") console.error(err);
       } finally {
         setLoading(false);
       }
@@ -63,11 +63,7 @@ export default function HomePage() {
         <main className="flex flex-col flex-1 px-10">
           <div className="flex flex-col items-center justify-center py-20">
             <div className="w-full max-w-2xl">
-              <SearchBar
-                value={q}
-                onChange={setQ}
-                isDebouncing={isDebouncing}
-              />
+              <SearchBar value={q} onChange={setQ} />
             </div>
           </div>
 
@@ -88,7 +84,7 @@ export default function HomePage() {
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-              {recipes.map((r: any) => (
+              {recipes.map((r: Meal) => (
                 <RecipeCard key={r.idMeal} recipe={r} />
               ))}
             </div>
