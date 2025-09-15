@@ -41,10 +41,8 @@ export default function FavoritesPage() {
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
       <div className="layout-container flex h-full grow flex-col">
-        {/* Header */}
         <Header />
 
-        {/* Main Content */}
         <main className="flex flex-col flex-1 px-10 py-8">
           <div className="max-w-7xl mx-auto w-full">
             <div className="text-center space-y-4 mb-8">

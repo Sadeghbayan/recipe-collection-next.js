@@ -22,7 +22,6 @@ export default async function RecipePage({ params }: Props) {
     if (ing && ing.trim()) ingredients.push({ ing, measure });
   }
 
-  // Format instructions into numbered steps
   const instructions = meal.strInstructions
     ? meal.strInstructions
         .split("\r\n")
@@ -36,7 +35,6 @@ export default async function RecipePage({ params }: Props) {
 
       <main className="container mx-auto px-6 py-12">
         <div className="max-w-5xl mx-auto">
-          {/* Recipe Image */}
           <div className="w-full h-96 rounded-2xl overflow-hidden shadow-lg mb-8">
             <Image
               src={meal.strMealThumb}
@@ -48,9 +46,7 @@ export default async function RecipePage({ params }: Props) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {/* Main Content */}
             <div className="md:col-span-2">
-              {/* Recipe Header */}
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
@@ -70,7 +66,6 @@ export default async function RecipePage({ params }: Props) {
                 <RecipeFavoriteButton id={meal.idMeal} />
               </div>
 
-              {/* Recipe Description */}
               <p className="text-[var(--text-secondary)] mb-10">
                 A delicious {meal.strCategory.toLowerCase()} recipe from{" "}
                 {meal.strArea}.
@@ -78,7 +73,6 @@ export default async function RecipePage({ params }: Props) {
                   ` ${meal.strInstructions.substring(0, 150)}...`}
               </p>
 
-              {/* Instructions */}
               <h2 className="text-2xl font-bold mb-6">Instructions</h2>
               <div className="prose max-w-none text-[var(--text-secondary)] space-y-4">
                 {instructions.map((step: string, index: number) => (
@@ -89,7 +83,6 @@ export default async function RecipePage({ params }: Props) {
               </div>
             </div>
 
-            {/* Ingredients Sidebar */}
             <div className="bg-white p-6 rounded-2xl shadow-md">
               <h2 className="text-2xl font-bold mb-6">Ingredients</h2>
               <ul className="space-y-4">

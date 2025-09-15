@@ -19,16 +19,14 @@ export default function HomePage() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // initial query
     setQ("chicken");
     setDebouncedQ("chicken");
   }, []);
 
-  // Debounce the search query
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedQ(q);
-    }, 300); // 300ms delay
+    }, 300);
 
     return () => clearTimeout(timer);
   }, [q]);
@@ -56,10 +54,8 @@ export default function HomePage() {
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
       <div className="layout-container flex h-full grow flex-col">
-        {/* Header */}
         <Header />
 
-        {/* Main Content */}
         <main className="flex flex-col flex-1 px-10">
           <div className="flex flex-col items-center justify-center py-20">
             <div className="w-full max-w-2xl">
